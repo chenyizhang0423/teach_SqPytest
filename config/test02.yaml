@@ -1,0 +1,42 @@
+---  #登录操作,下面每个用例时一个列表
+- #test_01
+  url: /api/mgr/loginReq
+  method: POST
+  detail: 正常登录
+  header: application/x-www-form-urlencoded
+  data:
+    username: auto
+    password: sdfsdfsdf
+  reps:
+    retcode: 0
+- #test_02
+  url: /api/mgr/loginReq
+  method: POST
+  detail: 无账号，有密码
+  header: application/x-www-form-urlencoded
+  data:
+    username: ""
+    password: sdfsdfsdf
+  reps:
+    retcode: 1
+- #test_03
+  url: /api/mgr/loginReq
+  method: POST
+  detail: 有账号，没密码
+  header: application/x-www-form-urlencoded
+  data:
+    username: auto
+    password: ""
+  reps:
+    retcode: 1
+- #test_04
+  url: /api/mgr/loginReq
+  method: POST
+  detail: 无账号无密码
+  header: application/x-www-form-urlencoded
+  data:
+    username: ""
+    password: ""
+  reps:
+    retcode: 1
+    reason: 账号密码错误
